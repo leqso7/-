@@ -426,6 +426,93 @@ font-size: 16px;
       backface-visibility: hidden;
       perspective: 1000px;
   }
+
+  /* მობილური ოპტიმიზაციისთვის ახალი სტილები */
+  @media screen and (max-width: 768px) {
+      .input-container {
+          position: static;  /* ფიქსირებული პოზიციიდან ჩვეულებრივზე გადავდივართ */
+          width: 90%;
+          margin: 20px auto;
+          z-index: 1;
+      }
+
+      #timer {
+          bottom: 70px;  /* ქვევით ჩამოვწიეთ ფეისბუქის ღილაკის თავზე */
+          right: 10px;
+          font-size: 18px;
+      }
+
+      #shutdownVideo {
+          bottom: 10px;
+          left: 70px;  /* გადავწიეთ ფეისბუქის ლოგოს გვერდით */
+      }
+
+      .container {
+          margin-top: 80px;  /* ზევით დავტოვეთ ადგილი input-ისთვის */
+          width: 95%;
+      }
+
+      .name-list {
+          max-height: calc(100vh - 300px);  /* დინამიური სიმაღლე */
+          margin-bottom: 80px;  /* ქვევით დავტოვეთ ადგილი ღილაკებისთვის */
+      }
+
+      #groupSizeOptions {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 10px;
+          z-index: 2;
+      }
+  }
+
+  /* პატარა ეკრანებისთვის დამატებითი ოპტიმიზაცია */
+  @media screen and (max-width: 480px) {
+      #timer {
+          bottom: 60px;
+          font-size: 16px;
+          padding: 5px 8px;
+      }
+
+      .input-container {
+          margin-top: 10px;
+      }
+
+      #nameInput {
+          width: 100%;
+          max-width: none;
+      }
+
+      #shutdownVideo {
+          width: 40px;
+          height: 40px;
+          left: 60px;
+      }
+
+      .container {
+          margin-top: 60px;
+      }
+  }
+
+  /* დამატებითი ოპტიმიზაცია მაღალი ეკრანებისთვის */
+  @media screen and (min-height: 800px) {
+      .name-list {
+          max-height: calc(100vh - 400px);
+      }
+  }
+
+  /* საფარი და iOS ოპტიმიზაცია */
+  @supports (-webkit-touch-callout: none) {
+      .container {
+          padding-bottom: env(safe-area-inset-bottom);
+      }
+      
+      #groupSizeOptions {
+          padding-bottom: calc(10px + env(safe-area-inset-bottom));
+      }
+  }
   </style>
 </head>
 <body style="background-color: white;"><div id="product-content" style="display: block;">
@@ -1169,7 +1256,7 @@ if (isFirstVisit) {
 }
 }
 
-// გვერდის ჩატვირთვისას შევამოწმოთ საიტის მდგომარეობა
+// გვერდის ჩატ���ირთვისას შევამოწმოთ საიტის მდგომარეობა
 document.addEventListener('DOMContentLoaded', checkSiteStatus);
 if (!localStorage.getItem('isFirstVisit')) {
 localStorage.setItem('isFirstVisit', 'true');
@@ -1691,7 +1778,7 @@ function showClassTemplateDialog() {
   document.body.appendChild(dialog);
 }
 
-// მოდიფიცირებული pairStudentsButton-ი�� event listener
+// მოდიფიცირებული pairStudentsButton-ი event listener
 pairStudentsButton.addEventListener('click', showClassTemplateDialog);
 // ოდიფიცირებული pairStudentsButton-ის event listener
 pairStudentsButton.addEventListener('click', showClassTemplateDialog);function downloadSite() {
